@@ -11,7 +11,7 @@
     <div class="d-flex" style="flex-wrap: wrap;">
         <?php foreach ($stories as $story) { ?>
         <div class="mx-2 my-3 movie-items" id="movie-id-2751">
-            <a href="/thong-tin-truyen/<?= $story['info']->story_slug ?>" title="Linh Kiếm Tôn">
+            <a href="/thong-tin-truyen/<?= $story['info']->story_slug ?>" title="<?= $story['info']->story_name ?>">
                 <div class="episode-latest bg-danger text-light position-absolute  p-1 text-center rounded">
                     <span><?= $story['count_ep'] . " chap" ?></span>
                 </div>
