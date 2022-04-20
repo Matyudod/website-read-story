@@ -5,6 +5,7 @@ $router->post('/dang-nhap', '\App\Controllers\Auth\LoginController@login');
 
 // Admin routes
 
+$router->post('/quan-ly/them-truyen', '\App\Controllers\DashboardController@handle_add_story');
 $router->get('/quan-ly/them-truyen', '\App\Controllers\DashboardController@add_story');
 $router->get('/quan-ly/quan-ly-truyen', '\App\Controllers\DashboardController@index');
 $router->get('/quan-ly', '\App\Controllers\DashboardController@index');

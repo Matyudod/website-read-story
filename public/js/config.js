@@ -17,7 +17,7 @@ function remove_category(times){
 function update_categories(categories,categories_show){
     if(categories.value != ""){
         var cate  = categories.value.substring(0,categories.value.length-1);
-        var text = '<button class="btn btn-outline-light me-2">' + cate.replaceAll(";",'<i class="fas fa-times ms-1" onclick="remove_category(this)"></i></button><button class="btn btn-outline-light me-2">')+'<i class="fas fa-times ms-1"  onclick="remove_category(this)"></i></button>';
+        var text = '<button type="button" class="btn btn-outline-light me-2">' + cate.replaceAll(";",'<i class="fas fa-times ms-1" onclick="remove_category(this)"></i></button><button type="button" class="btn btn-outline-light me-2">')+'<i class="fas fa-times ms-1"  onclick="remove_category(this)"></i></button>';
         categories_show.innerHTML = text;
     } else {
         categories_show.innerHTML = "";

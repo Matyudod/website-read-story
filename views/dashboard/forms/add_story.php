@@ -1,7 +1,7 @@
 <?php $this->layout("layouts/admin", ["title" => APPNAME]) ?>
 
 <?php $this->start("page") ?>
-<form method="POST" action="" class="flex-grow-1">
+<form method="POST" action="" enctype="multipart/form-data" class="flex-grow-1">
 
     <div class="row">
         <div class="col-1">
@@ -11,7 +11,8 @@
             <h3 class="text-center">Thêm truyện</h3>
             <div class="mb-3">
                 <label for="name" class="form-label">Tên truyện</label>
-                <input type="text" class="form-control" id="name" required placeholder="Vui lòng nhập tên truyện">
+                <input type="text" class="form-control" id="name" name="name" required
+                    placeholder="Vui lòng nhập tên truyện">
             </div>
             <div class="mb-3">
                 <label for="category" class="form-label">Thể loại</label>
@@ -28,8 +29,8 @@
             </div>
             <div class="mb-3">
                 <label for="decription" class="form-label">Tóm tắt truyện</label>
-                <textarea class="form-control" id="decription" rows="6" placeholder="Vui lòng nhập tóm tắt truyện"
-                    required></textarea>
+                <textarea class="form-control" id="decription" name="decription" rows="6"
+                    placeholder="Vui lòng nhập tóm tắt truyện" required></textarea>
             </div>
 
             <div class="form-check form-switch m-3">
@@ -50,7 +51,7 @@
                 <a href="/quan-ly/quan-ly-truyen">
                     <button class="btn btn-outline-light" type="button">Trở lại</button>
                 </a>
-                <button class="btn btn-light mx-3" type="submit">Thêm truyện</button>
+                <button class="btn btn-light mx-3" name="addStory" type="submit">Thêm truyện</button>
             </div>
         </div>
         <div class="col-3">
