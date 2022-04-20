@@ -116,4 +116,17 @@ class DashboardController extends Controller
 		}
 		redirect("/quan-ly/", []);
 	}
+	public function chapter(string $slug = null)
+	{
+		$this->data['story'] = Story::where("story_slug", $slug)->get()[0];
+		$this->data['eps'] = Episode::where("story_id", $this->data['story']->id)->get();
+		$this->sendPage('dashboard/chapter_management', $this->data);
+	}
+	public function add_chapter(string $slug = null)
+	{
+
+		$this->data['story'] = Story::where("story_slug", $slug)->get()[0];
+		$this->data['ep'] = Episode::where("story_id", $this->data['story']->id)->count() + 1;
+		$this->sendPage('dashboard/forms/add_chapter', $this->data);
+	}
 }
