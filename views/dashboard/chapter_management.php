@@ -7,8 +7,13 @@
         <h3 class="card-title ">
             <div class="h3">Quản lý chapter : "<?= $story->story_name ?>"</div>
         </h3>
-        <a href="/quan-ly/them-chapter/<?= $story->story_slug ?>" class="btn btn-primary">Thêm chapter <i
-                class="fas fa-plus"></i></a>
+        <div>
+            <a href="/quan-ly" class="btn btn-outline-primary me-2">Trở về <i class="fas fa-angle-left"></i></a>
+            <a href="/quan-ly/them-chapter/<?= $story->story_slug ?>" class="btn btn-primary">Thêm chapter <i
+                    class="fas fa-plus"></i></a>
+        </div>
+
+
     </div>
     <div class="card-body">
         <div class="row">
