@@ -247,4 +247,19 @@ class DashboardController extends Controller
 		}
 		redirect("/quan-ly/danh-sach-chapter/" . $ep_slug, []);
 	}
+	public function update_chapter(string $ep_slug = null)
+	{
+		$this->data['episode'] = $episode = Episode::where("slug", $ep_slug)->get()[0];
+		$this->data['story'] = Story::where("id", $episode->story_id)->get()[0];
+
+		$this->sendPage('dashboard/forms/update_chapter', $this->data);
+	}
+
+
+	public function category_management()
+	{
+		$this->data['categories'] = Category::where("category_status", 1)->get();
+
+		$this->sendPage('dashboard/category_management', $this->data);
+	}
 }

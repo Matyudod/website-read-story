@@ -41,13 +41,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="dashboard/employee_management" class="nav-link">
+                            <a href="/quan-ly/quan-ly-the-loai" class="nav-link">
                                 <i class="fas fa-th nav-icon"></i>
                                 <p>Quản lý</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="dashboard/add_employee" class="nav-link">
+                            <a href="/quan-ly/them-the-loai" class="nav-link">
                                 <i class="fas fa-plus nav-icon"></i>
                                 <p>Thêm thể loại</p>
                             </a>

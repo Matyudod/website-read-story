@@ -5,6 +5,9 @@ $router->post('/dang-nhap', '\App\Controllers\Auth\LoginController@login');
 
 // Admin routes
 
+$router->get('/quan-ly/quan-ly-the-loai', '\App\Controllers\DashboardController@category_management');
+
+$router->get('/quan-ly/chinh-sua-chapter/([a-zA-Z0-9-]*)', '\App\Controllers\DashboardController@update_chapter');
 $router->post('/quan-ly/them-chapter/([a-zA-Z0-9-]*)', '\App\Controllers\DashboardController@handle_add_chapter');
 $router->get('/quan-ly/them-chapter/([a-zA-Z0-9-]*)', '\App\Controllers\DashboardController@add_chapter');
 $router->get('/quan-ly/danh-sach-chapter/([a-zA-Z0-9-]*)', '\App\Controllers\DashboardController@chapter');

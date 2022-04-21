@@ -18,7 +18,23 @@ class HomeController extends Controller
 		parent::__construct();
 		$this->data["categories"] = Category::where("category_status", 1)->get();
 	}
-
+	// public function index(string $var = null)
+	// {
+	// 	$text = "Ta Yêu Kim Ngân";
+	// 	$text = explode(" ", $text);
+	// 	$x = Story::where("story_name", "like", "%" . $text[0] . "%");
+	// 	foreach ($text as $i => $t) {
+	// 		if ($i != 0) {
+	// 			$x = $x->orWhere("story_name", "like", "%" . $t . "%");
+	// 		}
+	// 	}
+	// 	$x = $x->get();
+	// 	$y = Story::where("status", 1)->get();
+	// 	echo "<pre>";
+	// 	foreach ($x as $a) {
+	// 		echo $a->story_name . "<br>";
+	// 	}
+	// }
 	public function index(string $page = null)
 	{
 		if ($page == null) {
