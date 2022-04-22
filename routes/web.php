@@ -5,6 +5,10 @@ $router->post('/dang-nhap', '\App\Controllers\Auth\LoginController@login');
 
 // Admin routes
 
+$router->post('/quan-ly/sua-the-loai/([a-zA-Z0-9-]*)', '\App\Controllers\DashboardController@handle_update_category');
+$router->get('/quan-ly/sua-the-loai/([a-zA-Z0-9-]*)', '\App\Controllers\DashboardController@update_category');
+$router->post('/quan-ly/them-the-loai', '\App\Controllers\DashboardController@handle_add_category');
+$router->get('/quan-ly/them-the-loai', '\App\Controllers\DashboardController@add_category');
 $router->get('/quan-ly/quan-ly-the-loai', '\App\Controllers\DashboardController@category_management');
 
 $router->get('/quan-ly/xoa-chapter/([a-zA-Z0-9-]*)', '\App\Controllers\DashboardController@handle_delete_chapter');

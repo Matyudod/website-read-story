@@ -26,11 +26,12 @@
                             <td><?= $category->category_name ?></td>
 
                             <td>
-                                <a href="/quan-ly/chinh-sua-the-loai/<?= $category->category_slug ?>"
+                                <a href="/quan-ly/sua-the-loai/<?= $category->category_slug ?>"
                                     class="btn btn-warning me-1">
                                     Sửa <i class="fas fa-cogs"></i>
                                 </a>
-                                <a href="/quan-ly/xoa-the-loai/<?= $category->category_slug ?>" class="btn btn-danger">
+                                <a onclick="if(confirm('Bạn có thật sự muốn gỡ thể loại truyện này không?')) window.location.href='/quan-ly/xoa-the-loai/<?= $category->category_slug ?>'"
+                                    class="btn btn-danger">
                                     Xóa <i class="fas fa-trash-alt"></i>
                                 </a>
                             </td>
