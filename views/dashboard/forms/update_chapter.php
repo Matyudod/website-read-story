@@ -12,7 +12,7 @@
             <div class="mb-3">
                 <label for="story_name" class="form-label">Tên truyện</label>
                 <input type="text" class="form-control" id="story_name" value="<?= $story->story_name ?>" disabled>
-                <input type="text" class="form-control" name="story_id" value="<?= "1" ?>" hidden>
+                <input type="text" class="form-control" name="story_id" value="<?= $story->id ?>" hidden>
             </div>
             <div class="mb-3">
                 <label for="ep" class="form-label">Chapter</label>
@@ -34,7 +34,7 @@
                 <a href="/quan-ly/danh-sach-chapter/<?= $story->story_slug ?>">
                     <button class="btn btn-outline-light" type="button">Trở lại</button>
                 </a>
-                <button class="btn btn-light mx-3" name="addChapter" type="submit">Thêm chapter</button>
+                <button class="btn btn-light mx-3" name="updateChapter" type="submit">Chỉnh sửa chapter</button>
             </div>
         </div>
         <div class="col-1">

@@ -254,12 +254,32 @@ class DashboardController extends Controller
 
 		$this->sendPage('dashboard/forms/update_chapter', $this->data);
 	}
+	public function handle_update_chapter(string $ep_slug = null)
+	{
+		extract($_POST);
+		$name = trim($name);
+		$content = nl2br($content);
+		$slug = Story::where("id", $story_id)->get()[0]->story_slug;
+		Episode::where("story_id", $story_id)->where("episode", $ep)->update([
+			"episode_name" => $name,
+			"content" =>  $content,
+			"status" =>  1,
+		]);
+		redirect("/quan-ly/danh-sach-chapter/" . $slug, []);
+	}
+	public function handle_delete_chapter(string $ep_slug = null)
+	{
+		$slug = Story::where("id", Episode::where("slug", $ep_slug)->get()[0]->story_id)->get()[0]->story_slug;
+		Episode::where("slug", $ep_slug)->update([
+			"status" =>  0,
+		]);
+		redirect("/quan-ly/danh-sach-chapter/" . $slug, []);
+	}
 
 
 	public function category_management()
 	{
 		$this->data['categories'] = Category::where("category_status", 1)->get();
-
 		$this->sendPage('dashboard/category_management', $this->data);
 	}
 }

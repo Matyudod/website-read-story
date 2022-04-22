@@ -30,13 +30,14 @@
                     <tbody id="tbody_product_management">
                         <?php foreach ($eps as $ep) { ?>
                         <tr>
-                            <td><?= $ep->episode ?></td>
-                            <td><?= $ep->episode_name ?></td>
+                            <td><?= $ep->episode  ?></td>
+                            <td><?= $ep->status == 1 ? $ep->episode_name : "<b>(*) Đã bị gỡ xuống</b>" ?></td>
                             <td>
                                 <a href="/quan-ly/chinh-sua-chapter/<?= $ep->slug ?>" class="btn btn-warning me-1">
                                     Sửa <i class="fas fa-cogs"></i>
                                 </a>
-                                <a href="/quan-ly/xoa-chapter/<?= $ep->slug ?>" class="btn btn-danger">
+                                <a onclick="if(confirm('Bạn có thật sự muốn gỡ  chapter này không?')) window.location.href='/quan-ly/xoa-chapter/<?= $ep->slug ?>'"
+                                    class="btn btn-danger">
                                     Xóa <i class="fas fa-trash-alt"></i>
                                 </a>
                             </td>

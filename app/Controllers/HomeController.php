@@ -18,23 +18,50 @@ class HomeController extends Controller
 		parent::__construct();
 		$this->data["categories"] = Category::where("category_status", 1)->get();
 	}
-	// public function index(string $var = null)
-	// {
-	// 	$text = "Ta Yêu Kim Ngân";
-	// 	$text = explode(" ", $text);
-	// 	$x = Story::where("story_name", "like", "%" . $text[0] . "%");
-	// 	foreach ($text as $i => $t) {
-	// 		if ($i != 0) {
-	// 			$x = $x->orWhere("story_name", "like", "%" . $t . "%");
-	// 		}
-	// 	}
-	// 	$x = $x->get();
-	// 	$y = Story::where("status", 1)->get();
-	// 	echo "<pre>";
-	// 	foreach ($x as $a) {
-	// 		echo $a->story_name . "<br>";
-	// 	}
-	// }
+	public function search()
+	{
+
+		if (isset($_POST["search"])) {
+			$text = $_POST["keyword"];
+			$text = explode(" ", $text);
+			$x = Story::where("story_name", "like", "%" . $text[0] . "%");
+			foreach ($text as $i => $t) {
+				if ($i != 0) {
+					$x = $x->orWhere("story_name", "like", "%" . $t . "%");
+				}
+			}
+			$x = $x->where("status", 1)->get();
+
+			$now = Story::where("id", "<>", $x[0]->id);
+			foreach ($x as $i => $a) {
+				if ($i != 0) {
+					$now = $now->where("id", "<>",  $a->id);
+				}
+			}
+			$z = $now->get();
+			foreach ($x as $a) {
+				$stories[] = $a;
+			}
+			foreach ($z as $a) {
+				$stories[] = $a;
+			}
+			$this->data['menu_page'] = [
+				'quantily_page' => 1,
+				"active_page" => 1,
+			];
+			foreach ($stories as $story) {
+
+				$this->data['stories'][] = [
+					"info" => $story,
+					"count_ep" => Episode::where("story_id", $story->id)->count(),
+				];
+			}
+
+			$this->sendPage('home', $this->data);
+		} else {
+			$this->index();
+		}
+	}
 	public function index(string $page = null)
 	{
 		if ($page == null) {

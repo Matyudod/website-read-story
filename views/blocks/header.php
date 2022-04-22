@@ -6,11 +6,11 @@
             </a>
         </div>
         <div class="flex-grow-1 mx-4">
-            <form class="d-flex" style="width:100%">
-                <input type="text" placeholder="Nhập từ khoá..." class="p-2 flex-grow-1 bg-black text-gray"
+            <form class="d-flex" action="/" method="post" style="width:100%">
+                <input type="search" placeholder="Nhập từ khoá..." class="p-2 flex-grow-1 bg-black text-light"
                     name="keyword">
-                <button type="submit" class="p-2 bg-black btn btn-dark">
-                    <i class="fa fa-search"></i>
+                <button type="submit" name="search" class="py-2 px-3 bg-black btn btn-dark">
+                    Tìm kiếm <i class="fa fa-search"></i>
                 </button>
             </form>
         </div>
