@@ -28,7 +28,7 @@
                 <label for="content" class="form-label">Nội dung chapter</label>
                 <textarea class="form-control" id="content" name="content" rows="30"
                     placeholder="Vui lòng nhập nội dung chapter"
-                    required><?= str_replace("\t", " ", str_replace("<br>", "\n", str_replace("     ", " ", str_replace("\n", " ",  $episode->content))))   ?></textarea>
+                    required><?= str_replace("\t", " ", str_replace("<br />", "", str_replace("<br>", "\n", str_replace("     ", " ", str_replace("\n", " ",  $episode->content)))))   ?></textarea>
             </div>
             <div class="mb-3 text-center">
                 <a href="/quan-ly/danh-sach-chapter/<?= $story->story_slug ?>">
