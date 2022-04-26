@@ -33,6 +33,7 @@ $router->get('/thong-tin-truyen/([a-zA-Z0-9-]*)', '\App\Controllers\HomeControll
 // search
 $router->post('/', '\App\Controllers\HomeController@search');
 // Home
+$router->get('/the-loai/([a-zA-Z0-9-]*)', '\App\Controllers\HomeController@category');
 $router->get('/trang-chu/([a-zA-Z0-9-]*)', '\App\Controllers\HomeController@index');
 $router->get('/([a-zA-Z0-9-]*)', '\App\Controllers\HomeController@index');
 $router->get('/trang-chu', '\App\Controllers\HomeController@index');

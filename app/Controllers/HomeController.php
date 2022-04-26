@@ -62,6 +62,30 @@ class HomeController extends Controller
 			$this->index();
 		}
 	}
+	public function category(string $slug = null)
+	{
+
+		$page = "1";
+		$page = (int) $page - 1;
+		$cate = Category::where("category_slug", $slug)->get()[0];
+		$genres = Genre::where("category_id", $cate->id)->get();
+		foreach ($genres as $genre) {
+			$stories[] = Story::where("status", 1)->where("id", $genre->story_id)->get()[0];
+		}
+		$this->data['menu_page'] = [
+			'quantily_page' => 1,
+			"active_page" => $page + 1,
+		];
+		foreach ($stories as $story) {
+
+			$this->data['stories'][] = [
+				"info" => $story,
+				"count_ep" => Episode::where("story_id", $story->id)->count(),
+			];
+		}
+
+		$this->sendPage('home', $this->data);
+	}
 	public function index(string $page = null)
 	{
 		if ($page == null) {
