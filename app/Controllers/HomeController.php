@@ -18,6 +18,29 @@ class HomeController extends Controller
 		parent::__construct();
 		$this->data["categories"] = Category::where("category_status", 1)->get();
 	}
+	public function index(string $page = null)
+	{
+		if ($page == null) {
+			$page = "1";
+		} else {
+			$page = str_replace("trang-", "", $page);
+		}
+		$page = (int) $page - 1;
+		$stories = Story::where("status", 1)->orderBy("id", "DESC")->skip($page * 30)->take($page * 30 + 30)->get();
+		$this->data['menu_page'] = [
+			'quantily_page' => ceil(Story::where("status", 1)->count() / 30),
+			"active_page" => $page + 1,
+		];
+		foreach ($stories as $story) {
+
+			$this->data['stories'][] = [
+				"info" => $story,
+				"count_ep" => Episode::where("story_id", $story->id)->count(),
+			];
+		}
+
+		$this->sendPage('home', $this->data);
+	}
 	public function search()
 	{
 
@@ -74,29 +97,6 @@ class HomeController extends Controller
 		}
 		$this->data['menu_page'] = [
 			'quantily_page' => 1,
-			"active_page" => $page + 1,
-		];
-		foreach ($stories as $story) {
-
-			$this->data['stories'][] = [
-				"info" => $story,
-				"count_ep" => Episode::where("story_id", $story->id)->count(),
-			];
-		}
-
-		$this->sendPage('home', $this->data);
-	}
-	public function index(string $page = null)
-	{
-		if ($page == null) {
-			$page = "1";
-		} else {
-			$page = str_replace("trang-", "", $page);
-		}
-		$page = (int) $page - 1;
-		$stories = Story::where("status", 1)->orderBy("id", "DESC")->skip($page * 30)->take($page * 30 + 30)->get();
-		$this->data['menu_page'] = [
-			'quantily_page' => ceil(Story::where("status", 1)->count() / 30),
 			"active_page" => $page + 1,
 		];
 		foreach ($stories as $story) {
