@@ -1,5 +1,5 @@
 <?php
-$router->post('/dang-xuat', '\App\Controllers\Auth\LoginController@logout');
+$router->get('/dang-xuat', '\App\Controllers\Auth\LoginController@logout');
 $router->get('/dang-nhap', '\App\Controllers\Auth\LoginController@showLoginForm');
 $router->post('/dang-nhap', '\App\Controllers\Auth\LoginController@login');
 
